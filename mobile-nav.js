@@ -39,6 +39,8 @@
 .drawer-nav__link:hover,.drawer-nav__link:focus-visible{color:#FB7029}
 .drawer-nav__link-label{display:flex;align-items:center;gap:.5em}.drawer-nav__thumb{flex:none;width:1.55em;height:1.55em;border-radius:50%;background:#E3ECF5;display:grid;place-items:center;overflow:hidden}.drawer-nav__thumb img{width:78%;height:78%;object-fit:contain;mix-blend-mode:multiply;display:block}.drawer-nav__thumb.is-photo img{width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
 .drawer-nav__link-icon{flex:none;width:.75em}
+.drawer-nav__list--root{gap:.35em}
+.drawer-nav__list--root > .drawer-nav__item > .drawer-nav__link{padding:.3em 0}
 .drawer-nav__group{gap:1em;flex-direction:column;display:flex}
 .drawer-nav__group-label{color:#11131F8c;text-transform:uppercase;letter-spacing:.08em;font-size:.75em;font-weight:600;line-height:1}
 .drawer-nav__group-collection{width:100%}
@@ -59,6 +61,22 @@
 .drawer-nav__footer{gap:.75em 1.5em;border-top:1px solid #11131F1f;flex-wrap:wrap;padding-top:1.25em;display:flex}
 .drawer-nav__footer-link{color:#11131F99;font-size:.875em;line-height:1.286;text-decoration:none;transition:color .3s cubic-bezier(.625,.05,0,1)}
 .drawer-nav__footer-link:hover,.drawer-nav__footer-link:focus-visible{color:#11131F}
+.drawer-nav__footer{align-items:center}
+.drawer-nav__lang{position:relative;margin-left:auto}
+.drawer-nav__flag{flex:none;width:1.5em;height:1.5em;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px #11131F1f}
+.drawer-nav__flag--nl{background:linear-gradient(#AE1C28 0 33.3%,#fff 0 66.6%,#21468B 0)}
+.drawer-nav__flag--be{background:linear-gradient(90deg,#1D1D1F 0 33.3%,#FDDA24 0 66.6%,#EF3340 0)}
+.drawer-nav__flag--de{background:linear-gradient(#1D1D1F 0 33.3%,#DD0000 0 66.6%,#FFCE00 0)}
+.drawer-nav__lang-btn{width:2.75em;height:2.75em;border-radius:50%;border:1px solid #E1DCD2;background:#fff;display:grid;place-items:center;cursor:pointer;padding:0;transition:border-color .2s,transform .3s cubic-bezier(.625,.05,0,1)}
+.drawer-nav__lang-btn:hover{border-color:#11131F}
+.drawer-nav__lang-btn .drawer-nav__flag{width:1.625em;height:1.625em}
+.drawer-nav__lang-pop{position:absolute;right:0;bottom:calc(100% + .625em);min-width:13em;background:#fff;border-radius:12px;padding:.375em;box-shadow:0 1em 2.5em #11131F29,0 0 0 1px #11131F0f;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(.5em) scale(.97);transform-origin:bottom right;transition:opacity .25s ease,transform .35s cubic-bezier(.625,.05,0,1),visibility .35s}
+.drawer-nav__lang[data-open="true"] .drawer-nav__lang-pop{opacity:1;visibility:visible;transform:none}
+.drawer-nav__lang-label{padding:.625em .75em .375em;color:#11131F8c;text-transform:uppercase;letter-spacing:.08em;font-size:.6875em;font-weight:600}
+.drawer-nav__lang-opt{display:flex;align-items:center;gap:.75em;padding:.625em .75em;border-radius:8px;color:#11131F;text-decoration:none;font-size:.9375em;font-weight:500}
+.drawer-nav__lang-opt:hover,.drawer-nav__lang-opt:focus-visible{background:#F7F5F1;color:#11131F}
+.drawer-nav__lang-opt small{margin-left:auto;color:#11131F80;font-size:.8em;font-weight:400}
+.drawer-nav__lang-opt[aria-current="true"] small{color:#FB7029;font-weight:600}
 .drawer-nav :focus-visible,.mt-nav-trigger:focus-visible{outline:2px solid #FB7029;outline-offset:2px}
 @media screen and (max-width:767px){
 .drawer-nav{--drawer-nav-width:100%;--drawer-nav-edge:2.5em}
@@ -84,30 +102,39 @@
 
   const W = 'https://www.mthekwerken.nl/wp-content/uploads/';
   const I = { dsm: W + '100cm.724.1-scaled-5-533x533.jpg', dsmz: W + '80cm.727.1-zwart-scaled-6.jpg', sp: W + 'Industriehekwerk_glad-6-533x543.png', poort: W + 'Liga-lp-5.jpg', paal: W + 'Aantekening-2019-12-12-155140-5-533x537.png', beugel: W + 'Dubbelstaafmat-eindbeugel-270x210_0-5.jpg', deur: ((window.__resources && window.__resources['nav_p_deur_png']) || 'assets/p-deur.png'), cpaal: ((window.__resources && window.__resources['nav_p_paal_png']) || 'assets/p-paal.png'), schutting: { src: ((window.__resources && window.__resources['nav_panel_jpg']) || 'assets/panel.jpg'), photo: true }, gevel: { src: ((window.__resources && window.__resources['nav_af_lamellen_png']) || 'assets/af-lamellen.png'), photo: true }, vlonder: { src: ((window.__resources && window.__resources['nav_af_houtnerf_png']) || 'assets/af-houtnerf.png'), photo: true } };
+  const PROMO = '<a data-drawer-nav-reveal href="' + SITE + '/configurator/" class="drawer-nav__promo"><span class="drawer-nav__promo-visual"><img src="' + ((window.__resources && window.__resources['nav_install_jpg']) || 'assets/install.jpg') + '" alt="Hekwerk plaatsen" class="drawer-nav__promo-img"></span><span class="drawer-nav__promo-text"><span class="drawer-nav__promo-title">Stel je hekwerk samen</span><span class="drawer-nav__promo-desc">Bereken panelen, palen en bevestigingen voor jouw situatie.</span><span class="drawer-nav__promo-cta">Naar de configurator</span></span></a>';
+  const HELP = group('Hulp bij kiezen', [['Offerte aanvragen', '/offerte-aanvragen/'], ['Hekwerk inmeten', '/blog/hekwerk-inmeten/'], ['Montagehandleidingen', '/klantenservice/montagehandleidingen/'], ['Klantenservice', '/klantenservice/']]) + PROMO;
   const MENU =
-    sheet('Hekwerken', 'Menu', [
-      sheet('Dubbelstaafmat', 'Hekwerken', [link('Dubbelstaafmat hekwerken', '/hekwerk/dubbelstaafmatten/', I.dsm), link('Dubbelstaafmat poorten', '/hekwerk/dubbelstaafmatten/dubbelstaafmat-poorten/', I.poort), link('Dubbelstaafmat onderdelen', '/hekwerk/dubbelstaafmatten/dubbelstaafmat-onderdelen/', I.beugel)], ['Bekijk alle dubbelstaafmat', '/hekwerk/dubbelstaafmatten/'], '', I.dsm),
-      sheet('Spijlenhekwerk', 'Hekwerken', [link('Spijlen hekwerken', '/hekwerk/spijlen-hekwerk/', I.sp), link('Spijlen hekwerk poorten', '/hekwerk/spijlen-hekwerk/spijlenhekwerk-poorten/', I.poort)], ['Bekijk alle spijlenhekwerk', '/hekwerk/spijlen-hekwerk/'], '', I.sp),
-      sheet('Poorten', 'Hekwerken', [link('Enkele poorten', '/poorten/enkele-poorten/', I.poort), link('Dubbele poorten', '/poorten/dubbele-poorten/', I.poort)], ['Bekijk alle poorten', '/poorten/'], '', I.poort),
-      sheet('Onderdelen', 'Hekwerken', [link('Hekwerk onderdelen', '/hekwerk/hekwerk-onderdelen/', I.paal), link('Dubbelstaafmat onderdelen', '/hekwerk/dubbelstaafmatten/dubbelstaafmat-onderdelen/', I.beugel)], ['Bekijk alle onderdelen', '/hekwerk/hekwerk-onderdelen/'], '', I.paal)
-    ], ['Bekijk alle hekwerken', '/hekwerk/'], group('Hulp bij kiezen', [['Hekwerk configurator', '/configurator/'], ['Offerte aanvragen', '/offerte-aanvragen/'], ['Hekwerk inmeten', '/blog/hekwerk-inmeten/']]), I.dsmz) +
-    sheet('Composiet', 'Menu', [
-      sheet('Schuttingen', 'Composiet', [link('Composiet schuttingen', '/composiet-schuttingen/', I.schutting), link('Schutting onderdelen', '/composiet-schuttingen/composiet-schutting-onderdelen/', I.cpaal)], ['Bekijk alle schuttingen', '/composiet-schuttingen/'], '', I.schutting),
-      link('Composiet poorten', '/composiet-schuttingen/composiet-tuindeuren/', I.deur),
-      link('Gevelbekleding', '/composiet-gevelbekleding/', I.gevel),
-      link('Vlonderplanken', '/composiet-vlonderplanken/', I.vlonder),
-      link('Onderdelen', '/composiet-schuttingen/composiet-schutting-onderdelen/', I.cpaal)
-    ], ['Bekijk alle composiet', '/composiet-schuttingen/'], '', I.deur) +
-    link('Offerte', '/offerte-aanvragen/') + link('Configurator', '/configurator/') + link('Klantenservice', '/klantenservice/') + link('Over ons', '/over-ons/');
+    sheet('Alle Hekwerken', 'Menu', [
+      link('Dubbelstaafmat hekwerken', '/hekwerk/dubbelstaafmatten/', I.dsm), link('Spijlen hekwerken', '/hekwerk/spijlen-hekwerk/', I.sp), link('Poorten', '/poorten/', I.poort), link('Onderdelen', '/hekwerk/hekwerk-onderdelen/', I.paal), link('Zwarte hekwerken', '/hekwerk/zwart-hekwerk/', I.dsmz)
+    ], ['Bekijk alle hekwerken', '/hekwerk/'], HELP, I.dsmz) +
+    sheet('Composiet Hekwerken', 'Menu', [
+      link('Composiet schuttingen', '/composiet-schuttingen/', I.schutting), link('Composiet poorten', '/composiet-schuttingen/composiet-tuindeuren/', I.deur), link('Gevelbekleding', '/composiet-gevelbekleding/', I.gevel), link('Vlonderplanken', '/composiet-vlonderplanken/', I.vlonder), link('Schutting onderdelen', '/composiet-schuttingen/composiet-schutting-onderdelen/', I.cpaal)
+    ], ['Bekijk alle composiet', '/composiet-schuttingen/'], HELP, I.schutting) +
+    sheet('Dubbelstaafmat hekwerken', 'Menu', [
+      link('Dubbelstaafmatten', '/hekwerk/dubbelstaafmatten/', I.dsm), link('Dubbelstaafmat poorten', '/hekwerk/dubbelstaafmatten/dubbelstaafmat-poorten/', I.poort), link('Dubbelstaafmat onderdelen', '/hekwerk/dubbelstaafmatten/dubbelstaafmat-onderdelen/', I.beugel)
+    ], ['Bekijk alle dubbelstaafmat', '/hekwerk/dubbelstaafmatten/'], HELP, I.dsm) +
+    sheet('Spijlen hekwerken', 'Menu', [
+      link('Spijlen hekwerken', '/hekwerk/spijlen-hekwerk/', I.sp), link('Spijlen hekwerk poorten', '/hekwerk/spijlen-hekwerk/spijlenhekwerk-poorten/', I.poort)
+    ], ['Bekijk alle spijlenhekwerk', '/hekwerk/spijlen-hekwerk/'], HELP, I.sp) +
+    sheet('Poorten', 'Menu', [
+      link('Enkele poorten', '/poorten/enkele-poorten/', I.poort), link('Dubbele poorten', '/poorten/dubbele-poorten/', I.poort), link('Dubbelstaafmat poorten', '/hekwerk/dubbelstaafmatten/dubbelstaafmat-poorten/', I.poort), link('Spijlen hekwerk poorten', '/hekwerk/spijlen-hekwerk/spijlenhekwerk-poorten/', I.poort), link('Composiet poorten', '/composiet-schuttingen/composiet-tuindeuren/', I.deur)
+    ], ['Bekijk alle poorten', '/poorten/'], HELP, I.poort) +
+    sheet('Onderdelen', 'Menu', [
+      link('Hekwerk onderdelen', '/hekwerk/hekwerk-onderdelen/', I.paal), link('Dubbelstaafmat onderdelen', '/hekwerk/dubbelstaafmatten/dubbelstaafmat-onderdelen/', I.beugel), link('Composiet onderdelen', '/composiet-schuttingen/composiet-schutting-onderdelen/', I.cpaal)
+    ], ['Bekijk alle onderdelen', '/hekwerk/hekwerk-onderdelen/'], HELP, I.paal);
 
   const OVERLAY =
-    '<div class="drawer-nav__bar"><a href="' + SITE + '" aria-label="Home" class="drawer-nav__logo"><img src=((window.__resources && window.__resources['nav_mt_mark_svg']) || 'assets/mt-mark.svg') alt="">MT hekwerken</a>' +
+    '<div class="drawer-nav__bar"><a href="' + SITE + '" aria-label="Home" class="drawer-nav__logo"><img src="' + ((window.__resources && window.__resources['nav_mt_mark_svg']) || 'assets/mt-mark.svg') + '" alt="">MT hekwerken</a>' +
     '<div class="drawer-nav__actions"><a href="' + SITE + '/winkelwagen/" class="drawer-nav__bag">Winkelwagen</a><button data-drawer-nav-toggle aria-expanded="false" aria-label="Menu sluiten" class="drawer-nav__toggle">' + toggleInner + '</button></div></div>' +
     '<div data-drawer-nav-backdrop class="drawer-nav__backdrop"></div>' +
     '<div data-drawer-nav-drawer class="drawer-nav__drawer" role="dialog" aria-modal="true" aria-label="Menu"><button data-drawer-nav-edge aria-label="Terug naar menu" class="drawer-nav__edge">' + chevL('drawer-nav__edge-icon') + '</button>' +
-    '<div class="drawer-nav__content"><div class="drawer-nav__collection"><ul class="drawer-nav__list">' + MENU + '</ul></div>' +
-    '<a data-drawer-nav-reveal href="' + SITE + '/configurator/" class="drawer-nav__promo"><span class="drawer-nav__promo-visual"><img src=((window.__resources && window.__resources['nav_install_jpg']) || 'assets/install.jpg') alt="Hekwerk plaatsen" class="drawer-nav__promo-img"></span><span class="drawer-nav__promo-text"><span class="drawer-nav__promo-title">Stel je hekwerk samen</span><span class="drawer-nav__promo-desc">Bereken panelen, palen en bevestigingen voor jouw situatie.</span><span class="drawer-nav__promo-cta">Naar de configurator</span></span></a>' +
-    '<div data-drawer-nav-reveal class="drawer-nav__footer"><a href="tel:+31855808704" class="drawer-nav__footer-link">+31 85 580 8704</a><a href="' + SITE + '/contact/" class="drawer-nav__footer-link">Contact</a><a href="' + SITE + '/mijn-account/" class="drawer-nav__footer-link">Account</a><a href="' + SITE + '/blog/" class="drawer-nav__footer-link">Blog</a></div>' +
+    '<div class="drawer-nav__content"><div class="drawer-nav__collection"><ul class="drawer-nav__list drawer-nav__list--root">' + MENU + '</ul></div>' +
+    PROMO + '<div data-drawer-nav-reveal class="drawer-nav__footer"><a href="tel:+31855808704" class="drawer-nav__footer-link">+31 85 580 8704</a><a href="' + SITE + '/contact/" class="drawer-nav__footer-link">Contact</a><a href="' + SITE + '/mijn-account/" class="drawer-nav__footer-link">Account</a>' + '<div class="drawer-nav__lang" data-open="false"><div class="drawer-nav__lang-pop" role="menu" aria-label="Kies land en taal"><span class="drawer-nav__lang-label">Land / taal</span>' +
+      '<a role="menuitem" aria-current="true" href="https://www.mthekwerken.nl" class="drawer-nav__lang-opt"><span class="drawer-nav__flag drawer-nav__flag--nl"></span>Nederland<small>Actief</small></a>' +
+      '<a role="menuitem" href="https://www.mthekwerken.be" class="drawer-nav__lang-opt"><span class="drawer-nav__flag drawer-nav__flag--be"></span>België<small>.be</small></a>' +
+      '<a role="menuitem" href="https://mtzaune.de" class="drawer-nav__lang-opt"><span class="drawer-nav__flag drawer-nav__flag--de"></span>Deutschland<small>.de</small></a></div>' +
+      '<button type="button" class="drawer-nav__lang-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Taal: Nederland. Wijzig land of taal"><span class="drawer-nav__flag drawer-nav__flag--nl"></span></button></div>' + '</div>' +
     '</div></div>';
 
   let gsapLoading = null;
@@ -229,6 +256,13 @@
       else { setOpen(false); if (extraToggles[0]) extraToggles[0].focus(); }
     };
     document.addEventListener('keydown', onKey);
+    const lang = nav.querySelector('.drawer-nav__lang'), langBtn = lang && lang.querySelector('.drawer-nav__lang-btn');
+    const setLang = (o) => { lang.setAttribute('data-open', String(o)); langBtn.setAttribute('aria-expanded', String(o)); };
+    if (lang) {
+      langBtn.addEventListener('click', (e) => { e.stopPropagation(); setLang(lang.getAttribute('data-open') !== 'true'); });
+      nav.addEventListener('click', (e) => { if (!lang.contains(e.target)) setLang(false); });
+      lang.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lang.getAttribute('data-open') === 'true') { e.stopPropagation(); setLang(false); langBtn.focus(); } });
+    }
     return { close: () => { if (isOpen) setOpen(false); }, destroy: () => { document.removeEventListener('keydown', onKey); tl.kill(); } };
   }
 

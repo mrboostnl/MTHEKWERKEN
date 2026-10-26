@@ -44,40 +44,40 @@ button{font-family:inherit}
     <a href="#" onMouseEnter="{{ logoAnim }}" style="display:flex;align-items:center;gap:6px;font-weight:700;font-size:24px;letter-spacing:-.02em">
       <svg width="40" height="40" viewBox="0 0 79 79" style="display:block;flex:none;overflow:visible"><circle data-lg="c" cx="39.5" cy="39.5" r="39.5" fill="#FB7029"></circle><g transform="translate(19.328 18.098)"><g data-lg="s"><path d="M183.984,199.425a18.32,18.32,0,0,0,18.3,18.3h3.746a18.319,18.319,0,0,0,18.3-18.3V172.441H183.984Zm4.294-22.691h31.756v22.691a14.021,14.021,0,0,1-14.005,14.006h-3.746a14.021,14.021,0,0,1-14-14.006Z" transform="translate(-183.984 -172.441)" fill="#fff"></path></g><g data-lg="t"><path d="M196.951,211.217H206.3v9.25H210.6v-9.25h9.352v-4.294h-23Z" transform="translate(-188.278 -183.858)" fill="#fff"></path></g><g data-lg="v"><path d="M219.956,189.772v-5.036l-11.513,7.054-11.513-7.053v5.036l11.513,7.054Z" transform="translate(-188.272 -176.512)" fill="#fff"></path></g></g></svg>MT hekwerken
     </a>
-    <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}"><div style="flex:1;min-width:200px;max-width:380px;margin-left:auto;background:#fff;border-radius:6px;padding:12px 16px;display:flex;align-items:center;gap:10px;color:#8A8C96;font-size:14px">
+    <sc-if value="{{ navDesk }}" hint-placeholder-val="{{ true }}"><div style="flex:1;min-width:200px;max-width:380px;margin-left:auto;background:#fff;border-radius:6px;padding:12px 16px;display:flex;align-items:center;gap:10px;color:#8A8C96;font-size:14px">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>Ik ben op zoek naar…
     </div>
     <div style="display:flex;gap:10px">
       <a href="#" style="border:1.5px solid #11131F;border-radius:6px;padding:11px 22px;font-size:16px">Calculator</a>
       <a href="#" style="background:#FB7029;color:#fff;border-radius:6px;padding:12px 22px;font-size:16px;font-weight:500">Offerte aanvragen</a>
     </div></sc-if>
-    <sc-if value="{{ isMob }}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="Zoeken" style="margin-left:auto;width:44px;height:44px;border:none;background:none;display:grid;place-items:center;cursor:pointer;padding:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button></sc-if>
+    <sc-if value="{{ navMob }}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="Zoeken" style="margin-left:auto;margin-right:-20px;width:44px;height:44px;border:none;background:none;display:grid;place-items:center;cursor:pointer;padding:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button></sc-if>
     <div style="position:relative;width:40px;height:40px;display:grid;place-items:center">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="1.8"><path d="M5 8h14l-1 12H6z"></path><path d="M9 8a3 3 0 016 0"></path></svg>
       <span style="position:absolute;top:4px;right:2px;background:#11131F;color:#fff;border-radius:8px;font-size:10px;min-width:16px;height:16px;display:grid;place-items:center;font-weight:600">{{ cartCount }}</span>
     </div>
-    <sc-if value="{{ isMob }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="mt-mobile-nav" from="./mobile-nav.js" hint-size="96px,44px"></x-import></sc-if>
+    <sc-if value="{{ navMob }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="mt-mobile-nav" from="./mobile-nav.js" hint-size="96px,44px"></x-import></sc-if>
   </div>
-  <nav style="background:#F7F5F1;border-top:1px solid #E6E2DA">
+  <sc-if value="{{ navDesk }}" hint-placeholder-val="{{ true }}"><nav style="background:#F7F5F1;border-top:1px solid #E6E2DA">
     <div class="hs" style="max-width:1320px;margin:0 auto;padding:14px clamp(16px,4vw,40px);display:flex;align-items:center;gap:32px;font-weight:500;font-size:16px;overflow-x:auto;white-space:nowrap">
       <a href="#">Hekwerken</a><a href="#" style="color:#FB7029">Composiet</a><a href="#">Offerte</a><a href="#">Configurator</a><a href="#">Over ons</a>
-      <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}"><div style="margin-left:auto;display:flex;align-items:center;gap:24px;font-size:14px;color:#3E4150">
+      <sc-if value="{{ navDesk }}" hint-placeholder-val="{{ true }}"><div style="margin-left:auto;display:flex;align-items:center;gap:24px;font-size:14px;color:#3E4150">
         <a href="#contact" style="color:#3E4150">Contact klantenservice</a>
         <a href="#" style="color:#3E4150">Account</a>
         <button type="button" aria-label="Taal kiezen" style="display:flex;align-items:center;gap:7px;border:none;background:none;padding:0;cursor:pointer;font-size:14px;font-weight:500;color:#11131F;font-family:inherit"><svg width="18" height="18" viewBox="0 0 18 18" style="border-radius:99px;display:block"><rect width="18" height="6" fill="#AE1C28"></rect><rect y="6" width="18" height="6" fill="#fff"></rect><rect y="12" width="18" height="6" fill="#21468B"></rect></svg>NL<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></button>
       </div></sc-if>
     </div>
-  </nav>
+  </nav></sc-if>
 </header>
 
 <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(247,245,241,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #E6E2DA;transform:{{ compactTransform }};opacity:{{ compactOpacity }};transition:transform .45s cubic-bezier(.22,1,.36,1), opacity .3s ease;pointer-events:{{ compactPointer }}">
   <div style="max-width:1320px;margin:0 auto;padding:10px clamp(16px,4vw,40px);display:flex;align-items:center;gap:28px">
     <a href="#" onClick="{{ toTop }}" onMouseEnter="{{ logoAnim }}" style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:19px;letter-spacing:-.02em;flex:none"><svg width="32" height="32" viewBox="0 0 79 79" style="display:block;flex:none;overflow:visible"><circle data-lg="c" cx="39.5" cy="39.5" r="39.5" fill="#FB7029"></circle><g transform="translate(19.328 18.098)"><g data-lg="s"><path d="M183.984,199.425a18.32,18.32,0,0,0,18.3,18.3h3.746a18.319,18.319,0,0,0,18.3-18.3V172.441H183.984Zm4.294-22.691h31.756v22.691a14.021,14.021,0,0,1-14.005,14.006h-3.746a14.021,14.021,0,0,1-14-14.006Z" transform="translate(-183.984 -172.441)" fill="#fff"></path></g><g data-lg="t"><path d="M196.951,211.217H206.3v9.25H210.6v-9.25h9.352v-4.294h-23Z" transform="translate(-188.278 -183.858)" fill="#fff"></path></g><g data-lg="v"><path d="M219.956,189.772v-5.036l-11.513,7.054-11.513-7.053v5.036l11.513,7.054Z" transform="translate(-188.272 -176.512)" fill="#fff"></path></g></g></svg>MT hekwerken</a>
-    <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}"><nav class="hs" style="display:flex;gap:24px;font-weight:500;font-size:15px;overflow-x:auto;white-space:nowrap;min-width:0">
+    <sc-if value="{{ navDesk }}" hint-placeholder-val="{{ true }}"><nav class="hs" style="display:flex;gap:24px;font-weight:500;font-size:15px;overflow-x:auto;white-space:nowrap;min-width:0">
       <a href="#">Hekwerken</a><a href="#" style="color:#FB7029">Composiet</a><a href="#">Offerte</a><a href="#">Configurator</a><a href="#">Over ons</a><a href="#">Contact</a>
     </nav></sc-if>
-    <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}"><button onClick="{{ addToCart }}" style="margin-left:auto;flex:none;height:44px;border:none;border-radius:8px;background:#FB7029;color:#fff;font-size:15px;font-weight:600;cursor:pointer;padding:0 18px;white-space:nowrap;display:flex;align-items:center;gap:8px" style-hover="background:#E9611C"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><path d="M5 8h14l-1 12H6z"></path><path d="M9 8a3 3 0 016 0"></path></svg>{{ ctaLabel }}</button></sc-if><sc-if value="{{ isMob }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto"></span></sc-if>
-    <sc-if value="{{ isMob }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="mt-mobile-nav" from="./mobile-nav.js" hint-size="96px,44px"></x-import></sc-if>
+    <sc-if value="{{ navDesk }}" hint-placeholder-val="{{ true }}"><button onClick="{{ addToCart }}" style="margin-left:auto;flex:none;height:44px;border:none;border-radius:8px;background:#FB7029;color:#fff;font-size:15px;font-weight:600;cursor:pointer;padding:0 18px;white-space:nowrap;display:flex;align-items:center;gap:8px" style-hover="background:#E9611C"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><path d="M5 8h14l-1 12H6z"></path><path d="M9 8a3 3 0 016 0"></path></svg>{{ ctaLabel }}</button></sc-if><sc-if value="{{ navMob }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto"></span></sc-if>
+    <sc-if value="{{ navMob }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="mt-mobile-nav" from="./mobile-nav.js" hint-size="96px,44px"></x-import></sc-if>
   </div>
 </div>
 
@@ -119,32 +119,45 @@ button{font-family:inherit}
           </div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-            <span style="font-size:14px;font-weight:600">Afwerking</span>
-            <div style="border:1px solid {{ ddBorder }};border-radius:8px;background:#fff;overflow:hidden">
-              <button type="button" onClick="{{ ddToggle }}" style="width:100%;display:flex;align-items:center;gap:14px;border:none;background:none;padding:5px 12px 5px 5px;cursor:pointer;text-align:left">
-                <img src="{{ finishImg }}" alt="" style="width:34px;height:34px;border-radius:5px;object-fit:cover;display:block;flex:none"></img>
-                <span style="flex:1;font-size:14px;color:#11131F">{{ finishName }}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.2" stroke-linecap="round" style="flex:none;transform:{{ ddRot }};transition:transform .2s"><path d="M6 9l6 6 6-6"></path></svg>
-              </button>
-              <sc-if value="{{ ddOpen }}" hint-placeholder-val="{{ false }}">
-                <div style="border-top:1px solid #EEEAE3;display:flex;flex-direction:column;padding:6px">
-                  <sc-for list="{{ finishes }}" as="f" hint-placeholder-count="4">
-                    <div style="display:flex;align-items:center;gap:6px;border-radius:8px;background:{{ f.rowBg }}">
-                      <button type="button" onClick="{{ f.pickClose }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:12px;border:none;background:none;padding:6px;cursor:pointer;text-align:left">
-                        <img src="{{ f.img }}" alt="" style="width:44px;height:44px;border-radius:6px;object-fit:cover;display:block;flex:none"></img>
-                        <span style="display:flex;flex-direction:column;min-width:0"><span style="font-size:15px;font-weight:{{ f.weight }}">{{ f.name }}</span><span style="font-size:13px;color:#6B6E7A">{{ f.short }}</span></span>
-                      </button>
-                      <button type="button" onClick="{{ f.zoom }}" aria-label="Bekijk afwerking groot" style="flex:none;width:34px;height:34px;margin-right:6px;border-radius:99px;border:none;background:#F1EEE8;display:grid;place-items:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2M11 8.5v5M8.5 11h5"></path></svg></button>
-                    </div>
-                  </sc-for>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+        <div style="position:relative;display:flex;flex-direction:column;gap:8px;min-width:0">
+          <span style="font-size:14px;font-weight:600">Afwerking</span>
+          <button type="button" onClick="{{ ddToggle }}" aria-expanded="{{ ddOpen }}" style="width:100%;height:50px;display:flex;align-items:center;gap:12px;border:1.5px solid {{ ddBorder }};border-radius:8px;background:#fff;padding:0 14px 0 6px;cursor:pointer;text-align:left;font-family:inherit;transition:border-color .2s" style-hover="border-color:#11131F">
+            <img src="{{ finishImg }}" alt="" style="width:36px;height:36px;border-radius:5px;object-fit:cover;display:block;flex:none"></img>
+            <span style="flex:1;min-width:0;font-size:15px;font-weight:500;color:#11131F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ finishName }}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.2" stroke-linecap="round" style="flex:none;transform:{{ ddRot }};transition:transform .2s"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
+          <sc-if value="{{ ddOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:0;top:calc(100% + 6px);z-index:30;width:max(100%,300px);max-width:calc(100vw - 40px);background:#fff;border-radius:10px;box-shadow:0 14px 40px rgba(14,17,32,.16),0 0 0 1px rgba(14,17,32,.06);display:flex;flex-direction:column;padding:6px;animation:upsellIn .25s cubic-bezier(.22,1,.36,1) both">
+              <sc-for list="{{ finishes }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:6px;border-radius:8px;background:{{ f.rowBg }}">
+                  <button type="button" onClick="{{ f.pickClose }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:12px;border:none;background:none;padding:6px;cursor:pointer;text-align:left;font-family:inherit">
+                    <img src="{{ f.img }}" alt="" style="width:44px;height:44px;border-radius:6px;object-fit:cover;display:block;flex:none"></img>
+                    <span style="display:flex;flex-direction:column;min-width:0"><span style="font-size:15px;font-weight:{{ f.weight }}">{{ f.name }}</span><span style="font-size:13px;color:#6B6E7A">{{ f.short }}</span></span>
+                  </button>
+                  <button type="button" onClick="{{ f.zoom }}" aria-label="Bekijk afwerking groot" style="flex:none;width:34px;height:34px;margin-right:6px;border-radius:99px;border:none;background:#F1EEE8;display:grid;place-items:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2M11 8.5v5M8.5 11h5"></path></svg></button>
                 </div>
-              </sc-if>
+              </sc-for>
             </div>
-          </div>
-      <div style="display:flex;flex-wrap:wrap;gap:14px 28px;align-items:flex-start">
-        <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Kleur</span><div style="display:flex;gap:6px"><sc-for list="{{ colors }}" as="c" hint-placeholder-count="3"><button type="button" onClick="{{ c.pick }}" aria-label="{{ c.label }}" title="{{ c.label }}" style="width:40px;height:40px;border-radius:99px;padding:3px;border:2px solid {{ c.ring }};background:#fff;cursor:pointer"><span style="display:block;width:100%;height:100%;border-radius:99px;background:{{ c.fill }}"></span></button></sc-for></div></div>
-        <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Aantal</span><div style="display:flex;align-items:center;justify-content:space-between;border:1.5px solid #E1DCD2;border-radius:8px;height:40px;width:112px;box-sizing:border-box"><button type="button" onClick="{{ dec }}" aria-label="Minder" style="width:34px;height:100%;border:none;background:none;font-size:18px;color:#FB7029;cursor:pointer">−</button><span style="font-weight:600;font-size:15px">{{ qty }}</span><button type="button" onClick="{{ inc }}" aria-label="Meer" style="width:34px;height:100%;border:none;background:none;font-size:18px;color:#FB7029;cursor:pointer">+</button></div></div>
+          </sc-if>
+        </div>
+        <div style="position:relative;display:flex;flex-direction:column;gap:8px;min-width:0">
+          <span style="font-size:14px;font-weight:600">Kleur</span>
+          <button type="button" onClick="{{ colToggle }}" aria-expanded="{{ colOpen }}" style="width:100%;height:50px;display:flex;align-items:center;gap:12px;border:1.5px solid {{ colBorder }};border-radius:8px;background:#fff;padding:0 14px;cursor:pointer;text-align:left;font-family:inherit;transition:border-color .2s" style-hover="border-color:#11131F">
+            <span style="flex:none;width:24px;height:24px;border-radius:99px;background:{{ colorFill }};box-shadow:inset 0 0 0 1px rgba(14,17,32,.12)"></span>
+            <span style="flex:1;min-width:0;font-size:15px;font-weight:500;color:#11131F">{{ colorLabel }}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.2" stroke-linecap="round" style="flex:none;transform:{{ colRot }};transition:transform .2s"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
+          <sc-if value="{{ colOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;right:0;left:0;top:calc(100% + 6px);z-index:30;background:#fff;border-radius:10px;box-shadow:0 14px 40px rgba(14,17,32,.16),0 0 0 1px rgba(14,17,32,.06);display:flex;flex-direction:column;padding:6px;animation:upsellIn .25s cubic-bezier(.22,1,.36,1) both">
+              <sc-for list="{{ colors }}" as="c" hint-placeholder-count="3">
+                <button type="button" onClick="{{ c.pick }}" style="display:flex;align-items:center;gap:12px;border:none;border-radius:8px;background:{{ c.rowBg }};padding:10px;cursor:pointer;text-align:left;font-family:inherit;font-size:15px;font-weight:{{ c.weight }};color:#11131F" style-hover="background:#F7F5F1">
+                  <span style="flex:none;width:24px;height:24px;border-radius:99px;background:{{ c.fill }};box-shadow:inset 0 0 0 1px rgba(14,17,32,.12)"></span>{{ c.label }}
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
@@ -158,6 +171,12 @@ button{font-family:inherit}
             </button>
           </sc-for>
         </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <strong style="font-size:16px;font-weight:600">Aantal schermen</strong>
+          <div style="display:flex;align-items:center;justify-content:space-between;border:1.5px solid #E1DCD2;border-radius:8px;height:46px;width:124px"><button type="button" onClick="{{ dec }}" aria-label="Minder" style="width:40px;height:100%;border:none;background:none;font-size:20px;color:#FB7029;cursor:pointer">−</button><span style="font-weight:600;font-size:16px">{{ qty }}</span><button type="button" onClick="{{ inc }}" aria-label="Meer" style="width:40px;height:100%;border:none;background:none;font-size:20px;color:#FB7029;cursor:pointer">+</button></div>
+        </div>
         <span style="font-size:13px;color:#6B6E7A">{{ meterLabel }}</span>
       </div>
 
@@ -165,7 +184,7 @@ button{font-family:inherit}
       <div style="display:flex;flex-direction:column;gap:8px;animation:upsellIn .5s cubic-bezier(.22,1,.36,1) both">
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
           <strong style="font-size:15px;font-weight:600">Vaak samen gekocht</strong>
-          <span style="font-size:13px;color:#6B6E7A">Aantallen berekend voor {{ qty }} panelen</span>
+          <span style="font-size:13px;color:#6B6E7A">Aantal berekend voor {{ qty }} schermen</span>
         </div>
         <sc-for list="{{ addons }}" as="a" hint-placeholder-count="3">
           <button onClick="{{ a.toggle }}" style="display:grid;grid-template-columns:52px 1fr auto 24px;align-items:center;gap:14px;background:#fff;border:1.5px solid {{ a.border }};border-radius:10px;padding:6px 14px 6px 6px;cursor:pointer;text-align:left;color:#11131F;font-family:inherit;transition:border-color .2s">
@@ -180,14 +199,6 @@ button{font-family:inherit}
       </div>
       </sc-if>
 
-      <a href="#" style="display:flex;align-items:center;gap:16px;background:#F1EEE8;border-radius:12px;padding:12px 16px 12px 12px;color:#11131F;text-decoration:none" style-hover="background:#ECE7DF">
-        <img src="assets/najaar.png" alt="" style="flex:none;width:60px;height:60px;border-radius:99px;display:block;object-fit:cover"></img>
-        <span style="flex:1;display:flex;flex-direction:column;gap:4px;min-width:0">
-          <strong style="font-size:16px;font-weight:600;line-height:1.25">Complete schutting in één keer?</strong>
-          <span style="font-size:14px;color:#3E4150">Stel alles samen in de calculator, zonder los te bestellen.</span>
-        </span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.2" stroke-linecap="round" style="flex:none"><path d="M9 6l6 6-6 6"></path></svg>
-      </a>
 
       <button onClick="{{ addToCart }}" style="width:100%;height:58px;border:none;border-radius:8px;background:#FB7029;color:#fff;font-size:18px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;font-family:inherit" style-hover="background:#E9611C">
         <span>{{ ctaLabel }}</span><span style="opacity:.6">·</span><span>{{ totalStr }}</span>
@@ -198,6 +209,14 @@ button{font-family:inherit}
         <a href="#" style="color:#11131F;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#C9C4BA">Gratis sample aanvragen</a>
         <a href="#" style="color:#11131F;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#C9C4BA">Offerte aanvragen</a>
       </div>
+      <a href="#" style="display:flex;align-items:center;gap:16px;background:#F1EEE8;border-radius:12px;padding:12px 16px 12px 12px;color:#11131F;text-decoration:none" style-hover="background:#ECE7DF">
+        <img src="assets/najaar.png" alt="" style="flex:none;width:60px;height:60px;border-radius:99px;display:block;object-fit:cover"></img>
+        <span style="flex:1;display:flex;flex-direction:column;gap:4px;min-width:0">
+          <strong style="font-size:16px;font-weight:600;line-height:1.25">Complete schutting in één keer?</strong>
+          <span style="font-size:14px;color:#3E4150">Stel alles samen in de calculator, zonder los te bestellen.</span>
+        </span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#11131F" stroke-width="2.2" stroke-linecap="round" style="flex:none"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
 
 
 
@@ -809,12 +828,12 @@ button{font-family:inherit}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showUpsell&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversie&quot;},&quot;stickyBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversie&quot;},&quot;videoAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Video&quot;}}">
 class Component extends DCLogic {
-  state = { mob: typeof window !== 'undefined' && window.innerWidth < 760, img: 0, height: '180', pattern: 'Horizontaal', qty: 5, addons: { paal: true, beton: true, deur: false }, faq: 0, sticky: false, added: false };
+  state = { mob: typeof window !== 'undefined' && window.innerWidth < 760, tab: typeof window !== 'undefined' && window.innerWidth < 1100, img: 0, height: '180', pattern: 'Horizontaal', qty: 5, addons: { paal: false }, faq: 0, sticky: false, added: false };
   componentDidMount() {
     this.onKey = (e) => { if (e.key === 'Escape' && (this.state.hsOpen ?? true)) this.setState({ hsOpen: false }); }; window.addEventListener('keydown', this.onKey);
     this.onScroll = () => { const hp = document.getElementById('hs-parallax'); if (hp) { const r = hp.getBoundingClientRect(); if (r.bottom > 0 && r.top < window.innerHeight) { const p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight; const v = Math.round(p * -r.height * 0.1 * 10) / 10; if (v !== this.state.plx) this.setState({ plx: v }); } } const y = window.scrollY; const s = y > 900, c = y > 160; const pe = document.querySelector('[data-screen-label="01 Product"]'); const gl = document.getElementById('pdp-gallery'); const past = !this.state.mob || !gl || gl.getBoundingClientRect().bottom < 0; const h = past && (pe ? pe.getBoundingClientRect().bottom > window.innerHeight * 0.75 : y < 1200); if (s !== this.state.sticky || c !== this.state.compact || h !== this.state.helpIn) this.setState({ sticky: s, compact: c, helpIn: h }); };
     window.addEventListener('scroll', this.onScroll, { passive: true });
-    this.onResize = () => { const m = window.innerWidth < 760; if (m !== this.state.mob) this.setState({ mob: m }); }; window.addEventListener('resize', this.onResize); this.onResize();
+    this.onResize = () => { const m = window.innerWidth < 760, t = window.innerWidth < 1100; if (m !== this.state.mob || t !== this.state.tab) this.setState({ mob: m, tab: t }); }; window.addEventListener('resize', this.onResize); this.onResize();
     this.hlsTimer = setInterval(() => this.attachVideos(), 600);
     this.chkTimer = setInterval(() => { if (!document.hidden) this.setState(s => ({ chk: (s.chk || 0) + 1 })); }, 3000);
     this.projTimer = setInterval(() => { if (!this.projPaused && !document.hidden) this.projStep(1); }, 3200);
@@ -962,8 +981,6 @@ class Component extends DCLogic {
     const posts = s.qty + 1;
     const addonDefs = [
       { k: 'paal', short: 'Aluminium composiet schutting paal compleet', name: 'Aluminium composiet schutting paal compleet', note: posts + '× · 8×8 cm, 280 cm lang', desc: 'Aluminium paal om je composiet schutting mee te plaatsen. De paal wordt compleet geleverd, is 8×8 cm dik en heeft een lengte van 280 cm. De planken schuif je tussen twee palen.', need: 'Je hebt één paal meer nodig dan het aantal panelen.', price: 69.95, n: posts, img: 'assets/p-paal.png' },
-      { k: 'beton', short: 'Zak betonmortel 25 kg', name: 'Zak betonmortel 25 kg', note: posts + '× · 1 zak per paal', desc: 'Zak van 25 kg droge betonmortel. Hiermee zet je de schuttingpalen stevig en recht vast in de grond.', need: 'Reken op één zak per paal.', price: 9.95, n: posts, img: 'assets/p-beton.png' },
-      { k: 'deur', short: 'Composiet tuindeur Rhombus teak', name: 'Composiet tuindeur Rhombus teak', note: '1× · 90 cm breed, vanaf', desc: 'Composiet tuindeur Rhombus teak, 90 cm breed. Beschikbaar in 180 en 200 cm hoogte, passend bij je schutting. Compleet geleverd met slot, scharnieren en stootlijst.', need: 'Levertijd tussen de 5 en 18 werkdagen.', price: 369, n: 1, img: 'assets/p-deur.png' }
     ];
     const showUpsell = (this.props.showUpsell ?? true) && !!(s.tColor && s.tHeight && s.tQty);
     let total = unit * s.qty;
@@ -1031,7 +1048,7 @@ class Component extends DCLogic {
       projPause: () => { this.projPaused = true; }, projResume: () => { this.projPaused = false; },
       spin3d: this.spin3d || (this.spin3d = React.createElement('span', { style: { display: 'inline-block', animation: 'spin3d 3.6s cubic-bezier(.45,0,.25,1) infinite', transformStyle: 'preserve-3d' } }, '3D')),
       colorName: COLORS[col].label.toLowerCase(),
-      finishName: AF[af].name, finishImg: AF[af].img, ddOpen: !!s.afDd, ddRot: s.afDd ? 'rotate(180deg)' : 'none', ddBorder: s.afDd ? '#11131F' : '#E1DCD2', ddToggle: () => this.setState({ afDd: !s.afDd }),
+      finishName: AF[af].name, finishImg: AF[af].img, ddOpen: !!s.afDd, ddRot: s.afDd ? 'rotate(180deg)' : 'none', ddBorder: s.afDd ? '#11131F' : '#E1DCD2', ddToggle: () => this.setState({ afDd: !s.afDd, colDd: false }),
       finishes: AF.map((x, i) => ({ ...x, weight: i === af ? 600 : 400, rowBg: i === af ? '#F7F5F1' : 'transparent', pickClose: () => this.setState({ af: i, afDd: false }), zoom: () => this.setState({ afZoom: i }) })),
       afZoomOpen: afz >= 0, afZoom: { ...AZ, cta: afz === af ? 'Gekozen ✓' : 'Kies ' + AZ.name, choose: () => this.setState({ af: afz, afZoom: -1, afDd: false }) },
       ...(() => {
@@ -1050,7 +1067,7 @@ class Component extends DCLogic {
           calcSub: panels ? 'Voor ' + total.toFixed(1).replace('.', ',') + ' meter schutting · ' + (panels * 1.8).toFixed(1).replace('.', ',') + ' m aan panelen' : 'Een paneel is 180 cm breed, inclusief paal',
           calcCta: applied ? 'Overgenomen ✓' : 'Neem over',
           calcBtnOp: panels ? 1 : .4,
-          calcApply: () => { if (panels) this.setState({ qty: panels, calcApplied: true, addons: { ...s.addons, paal: true, beton: true } }); }
+          calcApply: () => { if (panels) this.setState({ qty: panels, calcApplied: true, }); }
         };
       })(),
       blogs: [
@@ -1064,10 +1081,11 @@ class Component extends DCLogic {
       ...(() => { const n = s.height === '200' ? 11 : 10, h = n * 13.5, top = 168 - h; return { dimTop: top, dimRectH: h, dimMid: top + h / 2, dimLines: Array.from({ length: n - 1 }, (_, i) => ({ y: top + (i + 1) * 13.5 })), dimFill: col === 'teak' ? '#B07A45' : col === 'grijs' ? '#8E8D89' : '#3A3B40' }; })(),
       afCloseZoom: () => this.setState({ afZoom: -1 }), afStop: (e) => e.stopPropagation(),
       hSeg: [['180', '180 cm'], ['200', '200 cm']].map(([k, label]) => ({ label, bg: s.height === k ? '#fff' : 'transparent', sh: 'none', pick: () => this.setState({ height: k, tHeight: true }) })),
-      colors: Object.entries(COLORS).map(([k, c]) => ({ label: c.label, fill: c.fill, ring: k === col ? '#11131F' : 'transparent', pick: () => this.setState({ color: k, img: 0, tColor: true }) })),
-      meterLabel: '≈ ' + (s.qty * 1.8).toFixed(1).replace('.', ',') + ' meter schutting',
+      colors: Object.entries(COLORS).map(([k, c]) => ({ label: c.label, fill: c.fill, ring: k === col ? '#11131F' : 'transparent', rowBg: k === col ? '#F7F5F1' : 'transparent', weight: k === col ? 600 : 400, pick: () => this.setState({ color: k, img: 0, tColor: true, colDd: false }) })),
+      colorLabel: COLORS[col].label, colorFill: COLORS[col].fill, colOpen: !!s.colDd, colRot: s.colDd ? 'rotate(180deg)' : 'none', colBorder: s.colDd ? '#11131F' : '#E1DCD2', colToggle: () => this.setState({ colDd: !s.colDd, afDd: false }),
+      meterLabel: s.qty + (s.qty === 1 ? ' scherm' : ' schermen') + ' = circa ' + (s.qty * 1.8).toFixed(1).replace('.', ',') + ' meter schutting',
       selectAllLabel: addonDefs.every(a => s.addons[a.k]) ? 'Alles verwijderen' : 'Alles toevoegen',
-      selectAllAddons: () => { const all = addonDefs.every(a => s.addons[a.k]); this.setState({ addons: { paal: !all, beton: !all, deur: !all } }); },
+      selectAllAddons: () => { const all = addonDefs.every(a => s.addons[a.k]); this.setState({ addons: { paal: !all } }); },
       infoTabs: [
         { title: 'Bezorging & levertijd', sub: 'Levering in 5–10 werkdagen', p1: 'M3 7h11v9H3zM14 10h4l3 3v3h-7', p2: 'M5.5 18.5a1.5 1.5 0 103 0 1.5 1.5 0 10-3 0M15.5 18.5a1.5 1.5 0 103 0 1.5 1.5 0 10-3 0', body: 'We bezorgen met onze eigen bezorgservice. Zo weet je zeker dat alles compleet en netjes bij je thuis aankomt. Alles wordt met zorg verpakt en vervoerd.', link: 'Levertijden en verzendkosten' },
         { title: 'Gratis afhalen in Boekel', sub: 'Op afspraak in ons magazijn', p1: 'M3 10l9-6 9 6v10H3z', p2: 'M9 20v-6h6v6', body: 'Haal je bestelling gratis op bij De Vlonder 213B in Boekel, op afspraak (ma t/m vr 09:00–16:00). Meet je aanhanger of bus vooraf goed op en neem voldoende spanbanden mee.', link: 'Afspraak maken' },
@@ -1152,7 +1170,7 @@ class Component extends DCLogic {
         { t: 'Zak betonmortel 25 kg', price: '€ 9,95', img: 'assets/watering.jpg' }
       ],
       showSticky: (this.props.stickyBar ?? true) && s.sticky,
-      isDesk: !s.mob, isMob: !!s.mob, galPos: s.mob ? 'static' : 'sticky',
+      isDesk: !s.mob, isMob: !!s.mob, navDesk: !s.tab, navMob: !!s.tab, galPos: s.mob ? 'static' : 'sticky',
       stickySub: s.qty + ' panelen · ' + s.height + ' cm · ' + s.pattern.toLowerCase()
     };
   }
